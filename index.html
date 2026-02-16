@@ -95,10 +95,10 @@
 
         /* Architecture */
         .arch { padding: 4rem 1.5rem; background: #f9fafb; border-bottom: 1px solid #f3f4f6; }
-        .arch-card { background: white; border-radius: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; padding: 2rem; max-width: 56rem; margin: 0 auto; }
+        .arch-card { background: white; border-radius: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; padding: 2rem; max-width: 56rem; margin: 0 auto; position: relative; overflow: hidden; }
         .arch-label { text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.5rem; }
-        .arch-flow { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-        .arch-node { padding: 1rem 1.5rem; border-radius: 0.75rem; text-align: center; min-width: 10rem; }
+        .arch-flow { display: flex; flex-direction: column; align-items: center; gap: 1rem; position: relative; }
+        .arch-node { padding: 1rem 1.5rem; border-radius: 0.75rem; text-align: center; min-width: 10rem; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
         .arch-node .emoji { font-size: 1.5rem; margin-bottom: 0.25rem; }
         .arch-node .name { font-weight: 600; font-size: 0.9rem; }
         .arch-node .desc { font-size: 0.75rem; margin-top: 0.25rem; }
@@ -110,14 +110,69 @@
         .arch-node.proxy .name { color: #78350f; } .arch-node.proxy .desc { color: #d97706; }
         .arch-node.mcp { background: #faf5ff; border: 1px solid #e9d5ff; }
         .arch-node.mcp .name { color: #581c87; } .arch-node.mcp .desc { color: #9333ea; }
-        .arch-arrow { color: #d1d5db; font-size: 1.5rem; }
+        .arch-arrow { color: #d1d5db; font-size: 1.5rem; position: relative; }
         .arch-arrow.mobile-vertical { display: inline; }
         .arch-arrow.desktop-horizontal { display: none; }
         .arch-note { text-align: center; font-size: 0.875rem; color: #6b7280; margin-top: 1.5rem; }
+        
+        /* Architecture Animation */
+        .arch-pulse { 
+            position: absolute; 
+            width: 8px; 
+            height: 8px; 
+            background: var(--brand-400); 
+            border-radius: 50%; 
+            box-shadow: 0 0 6px var(--brand-400), 0 0 12px var(--brand-200);
+            opacity: 0;
+            animation: flowPulseMobile 4s ease-in-out infinite;
+        }
+        .arch-pulse.pulse-1 { animation-delay: 0s; }
+        .arch-pulse.pulse-2 { animation-delay: 1s; }
+        .arch-pulse.pulse-3 { animation-delay: 2s; }
+        
+        /* Mobile vertical flow animation */
+        @keyframes flowPulseMobile {
+            0% { opacity: 0; top: 20%; transform: translateX(-50%); }
+            10% { opacity: 1; }
+            25% { opacity: 0.8; top: 35%; }
+            50% { opacity: 0.6; top: 50%; }
+            75% { opacity: 0.4; top: 65%; }
+            90% { opacity: 0.2; top: 80%; }
+            100% { opacity: 0; top: 80%; }
+        }
+        
+        /* Desktop horizontal flow animation */
+        @keyframes flowPulseDesktop {
+            0% { opacity: 0; left: 10%; transform: translateY(-50%); }
+            10% { opacity: 1; }
+            25% { opacity: 0.8; left: 30%; }
+            50% { opacity: 0.6; left: 50%; }
+            75% { opacity: 0.4; left: 70%; }
+            90% { opacity: 0.2; left: 90%; }
+            100% { opacity: 0; left: 90%; }
+        }
+        
+        /* Node highlight animation */
+        @keyframes nodeHighlight {
+            0%, 80%, 100% { transform: scale(1); box-shadow: none; }
+            15%, 65% { transform: scale(1.02); box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1); }
+        }
+        
+        .arch-node.animate { animation: nodeHighlight 4s ease-in-out infinite; }
+        .arch-node.animate.agent { animation-delay: 0.2s; }
+        .arch-node.animate.shim { animation-delay: 1.2s; }
+        .arch-node.animate.proxy { animation-delay: 2.2s; }
+        .arch-node.animate.mcp { animation-delay: 3.2s; }
+        
         @media (min-width: 768px) {
             .arch-flow { flex-direction: row; justify-content: center; gap: 1.5rem; }
             .arch-arrow.mobile-vertical { display: none; }
             .arch-arrow.desktop-horizontal { display: inline; }
+            
+            .arch-pulse { 
+                animation: flowPulseDesktop 4s ease-in-out infinite;
+                top: 50%;
+            }
         }
 
         /* Features */
@@ -348,28 +403,33 @@
         <div class="arch-card">
             <div class="arch-label">How ToolGuard fits in</div>
             <div class="arch-flow">
-                <div class="arch-node agent">
+                <!-- Animated pulse elements -->
+                <div class="arch-pulse pulse-1"></div>
+                <div class="arch-pulse pulse-2"></div>
+                <div class="arch-pulse pulse-3"></div>
+                
+                <div class="arch-node agent animate">
                     <div class="emoji">🤖</div>
                     <div class="name">AI Agent</div>
                     <div class="desc">Claude, GPT, etc.</div>
                 </div>
                 <div class="arch-arrow mobile-vertical">↓</div>
                 <div class="arch-arrow desktop-horizontal">→</div>
-                <div class="arch-node shim">
+                <div class="arch-node shim animate">
                     <div class="emoji">🛡️</div>
                     <div class="name">ToolGuard Shim</div>
                     <div class="desc">Local MCP adapter</div>
                 </div>
                 <div class="arch-arrow mobile-vertical">↓</div>
                 <div class="arch-arrow desktop-horizontal">→</div>
-                <div class="arch-node proxy">
+                <div class="arch-node proxy animate">
                     <div class="emoji">🔒</div>
                     <div class="name">ToolGuard Proxy</div>
                     <div class="desc">Policy · Review · Audit</div>
                 </div>
                 <div class="arch-arrow mobile-vertical">↓</div>
                 <div class="arch-arrow desktop-horizontal">→</div>
-                <div class="arch-node mcp">
+                <div class="arch-node mcp animate">
                     <div class="emoji">⚡</div>
                     <div class="name">MCP Server</div>
                     <div class="desc">Gmail, Slack, etc.</div>
