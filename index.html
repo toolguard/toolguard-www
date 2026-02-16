@@ -119,6 +119,28 @@
         .step code { display: block; margin-top: 1rem; background: #111827; color: #4ade80; padding: 1rem; border-radius: 0.5rem; font-size: 0.875rem; text-align: left; overflow-x: auto; }
         @media (min-width: 768px) { .steps { grid-template-columns: 1fr 1fr 1fr; } }
 
+        /* Why ToolGuard */
+        .why-toolguard { padding: 5rem 1.5rem; }
+        .comparison-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 4rem; max-width: 64rem; margin-left: auto; margin-right: auto; }
+        .comparison-card { padding: 2rem; border-radius: 1rem; }
+        .comparison-card.danger { background: #fef2f2; border: 1px solid #fecaca; }
+        .comparison-card.safe { background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .comparison-header { text-align: center; margin-bottom: 2rem; }
+        .comparison-icon { width: 4rem; height: 4rem; border-radius: 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; }
+        .comparison-icon.danger { background: #fee2e2; }
+        .comparison-icon.safe { background: #dcfce7; }
+        .comparison-header h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .comparison-header h3 { color: #111827; }
+        .comparison-label { font-size: 0.875rem; color: #6b7280; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+        .risk-list, .benefit-list { display: flex; flex-direction: column; gap: 1.5rem; }
+        .risk-item, .benefit-item { display: flex; gap: 1rem; align-items: flex-start; }
+        .risk-icon, .benefit-icon { width: 2.5rem; height: 2.5rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+        .risk-icon { background: #fee2e2; }
+        .benefit-icon { background: #dcfce7; }
+        .risk-item strong, .benefit-item strong { display: block; font-weight: 600; margin-bottom: 0.25rem; color: #111827; }
+        .risk-item p, .benefit-item p { font-size: 0.875rem; color: #6b7280; line-height: 1.6; }
+        @media (min-width: 768px) { .comparison-grid { grid-template-columns: 1fr 1fr; } }
+
         /* Pricing */
         .pricing { padding: 5rem 1.5rem; }
         .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 4rem; max-width: 64rem; margin-left: auto; margin-right: auto; }
@@ -254,6 +276,94 @@
                 </div>
             </div>
             <p class="arch-note">Your AI agent never sees raw credentials. ToolGuard enforces policies before any tool call reaches your services.</p>
+        </div>
+    </section>
+
+    <!-- Why ToolGuard -->
+    <section class="why-toolguard">
+        <div class="container">
+            <h2 class="section-title">Why ToolGuard?</h2>
+            <p class="section-subtitle">The risks of giving AI agents direct access to your tools — and how ToolGuard solves them.</p>
+            
+            <div class="comparison-grid">
+                <!-- Without ToolGuard -->
+                <div class="comparison-card danger">
+                    <div class="comparison-header">
+                        <div class="comparison-icon danger">⚠️</div>
+                        <h3>Without ToolGuard</h3>
+                        <p class="comparison-label">Direct MCP Access</p>
+                    </div>
+                    <div class="risk-list">
+                        <div class="risk-item">
+                            <div class="risk-icon">🔓</div>
+                            <div>
+                                <strong>Credentials Exposed</strong>
+                                <p>API keys and tokens stored in plain text, visible to the AI agent and potential attackers.</p>
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-icon">👻</div>
+                            <div>
+                                <strong>No Audit Trail</strong>
+                                <p>Zero visibility into what your AI is doing. No logs, no monitoring, no way to investigate issues.</p>
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-icon">🚫</div>
+                            <div>
+                                <strong>No Policy Enforcement</strong>
+                                <p>AI can access everything, all the time. No rate limits, restrictions, or safety guardrails.</p>
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-icon">💉</div>
+                            <div>
+                                <strong>Prompt Injection Risks</strong>
+                                <p>Malicious prompts can trick your AI into accessing sensitive data or performing harmful actions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- With ToolGuard -->
+                <div class="comparison-card safe">
+                    <div class="comparison-header">
+                        <div class="comparison-icon safe">🛡️</div>
+                        <h3>With ToolGuard</h3>
+                        <p class="comparison-label">Secure Proxy Access</p>
+                    </div>
+                    <div class="benefit-list">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🔐</div>
+                            <div>
+                                <strong>Credentials Isolated</strong>
+                                <p>API keys safely stored in the proxy. AI agent only has a simple token with limited scope.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">📊</div>
+                            <div>
+                                <strong>Full Audit Log</strong>
+                                <p>Complete visibility into every tool call, with request/response logging and policy decisions.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">⚡</div>
+                            <div>
+                                <strong>Policy Engine</strong>
+                                <p>Granular controls over what your AI can access, when, and under what conditions.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🚨</div>
+                            <div>
+                                <strong>Anomaly Detection</strong>
+                                <p>Behavioral monitoring catches unusual patterns and potential security breaches early.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
