@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation — ToolGuard</title>
+    <meta name="description" content="ToolGuard documentation: Quick start guide, architecture overview, and CLI reference for the AI-powered security proxy.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/favicon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #111827; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; }
+
+        /* Colors */
+        :root {
+            --brand-50: #f0f9ff; --brand-100: #e0f2fe; --brand-200: #bae6fd;
+            --brand-300: #7dd3fc; --brand-400: #38bdf8; --brand-500: #0ea5e9;
+            --brand-600: #0284c7; --brand-700: #0369a1; --brand-800: #075985;
+            --brand-900: #0c4a6e;
+        }
+
+        /* Layout */
+        .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+        .text-center { text-align: center; }
+
+        /* Nav */
+        .nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #f3f4f6; z-index: 50; }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; max-width: 72rem; margin: 0 auto; }
+        .nav-logo { display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem; font-weight: 700; color: #111827; }
+        .nav-logo-icon { width: 2rem; height: 2rem; border-radius: 0.5rem; background: linear-gradient(135deg, #0c4a6e, #0ea5e9); display: flex; align-items: center; justify-content: center; }
+        .nav-links { display: none; align-items: center; gap: 2rem; }
+        .nav-links a { font-size: 0.875rem; color: #4b5563; transition: color 0.2s; }
+        .nav-links a:hover { color: #111827; }
+        .nav-links a.active { color: var(--brand-600); font-weight: 500; }
+        .nav-cta { padding: 0.5rem 1rem; background: var(--brand-600); color: white; font-size: 0.875rem; font-weight: 500; border-radius: 0.5rem; transition: background 0.2s; }
+        .nav-cta:hover { background: var(--brand-700); color: white; }
+        .nav-hamburger { display: block; padding: 0.5rem; background: none; border: none; cursor: pointer; color: #4b5563; }
+        .nav-mobile { display: none; border-top: 1px solid #f3f4f6; background: white; padding: 1rem 1.5rem; }
+        .nav-mobile.open { display: block; }
+        .nav-mobile a { display: block; padding: 0.5rem 0; font-size: 0.875rem; color: #4b5563; }
+        .nav-mobile a.active { color: var(--brand-600); font-weight: 500; }
+        .nav-mobile .nav-cta { display: block; text-align: center; margin-top: 0.5rem; }
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+            .nav-hamburger { display: none; }
+        }
+
+        /* Hero */
+        .hero { 
+            background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0ea5e9 100%);
+            padding: 8rem 1.5rem 4rem;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; max-width: 48rem; margin: 0 auto; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.125rem; }
+        }
+
+        /* Content */
+        .content { padding: 4rem 0; }
+        .content-inner { max-width: 56rem; margin: 0 auto; }
+        .section { margin-bottom: 4rem; }
+        .section h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: #111827; }
+        .section h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #374151; }
+        .section p { font-size: 1rem; line-height: 1.75; color: #4b5563; margin-bottom: 1rem; }
+        .section ul, .section ol { margin: 1rem 0; padding-left: 2rem; }
+        .section li { margin-bottom: 0.5rem; color: #4b5563; line-height: 1.75; }
+        .section code { background: #f3f4f6; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace; font-size: 0.875rem; }
+        .section pre { background: #111827; color: #f9fafb; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; }
+        .section pre code { background: none; color: inherit; padding: 0; }
+        
+        .cta-section { background: var(--brand-50); padding: 3rem 0; text-align: center; margin: 4rem 0; border-radius: 1rem; }
+        .cta-section h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1rem; color: #4b5563; margin-bottom: 1.5rem; }
+        .cta-button { display: inline-block; padding: 0.75rem 1.5rem; background: var(--brand-600); color: white; font-weight: 500; border-radius: 0.5rem; transition: background 0.2s; }
+        .cta-button:hover { background: var(--brand-700); color: white; }
+
+        /* Footer */
+        .footer { background: #111827; color: #d1d5db; padding: 2rem 0; text-align: center; }
+        .footer a { color: var(--brand-400); }
+        .footer a:hover { color: var(--brand-300); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg width="20" height="20" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                ToolGuard
+            </a>
+            <div class="nav-links">
+                <a href="/#features">Features</a>
+                <a href="/#how-it-works">How It Works</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/docs/" class="active">Docs</a>
+                <a href="https://github.com/toolguard/toolguard">GitHub</a>
+                <a href="https://app.toolguard.ai" class="nav-cta">Get Started</a>
+            </div>
+            <button class="nav-hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="nav-mobile">
+            <a href="/#features">Features</a>
+            <a href="/#how-it-works">How It Works</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/docs/" class="active">Docs</a>
+            <a href="https://github.com/toolguard/toolguard">GitHub</a>
+            <a href="https://app.toolguard.ai" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Documentation</h1>
+            <p>Everything you need to get started with ToolGuard — the AI-powered security proxy for MCP servers</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content">
+        <div class="container">
+            <div class="content-inner">
+                
+                <!-- Quick Start -->
+                <div class="section">
+                    <h2>🚀 Quick Start</h2>
+                    <p>Get ToolGuard up and running in minutes with these simple steps.</p>
+                    
+                    <h3>Installation</h3>
+                    <pre><code># Install from npm
+npm install -g toolguard
+
+# Or install from source
+git clone https://github.com/toolguard/toolguard.git
+cd toolguard
+npm install
+npm run build</code></pre>
+
+                    <h3>Configuration</h3>
+                    <p>Create a <code>toolguard.config.json</code> file in your project directory:</p>
+                    <pre><code>{
+  "servers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "/path/to/allowed/directory"],
+      "env": {}
+    }
+  },
+  "security": {
+    "allowedActions": ["read", "write"],
+    "credentialIsolation": true,
+    "auditLogging": true
+  },
+  "proxy": {
+    "port": 3000,
+    "host": "localhost"
+  }
+}</code></pre>
+
+                    <h3>Running ToolGuard</h3>
+                    <p>Start the ToolGuard proxy server:</p>
+                    <pre><code># Start with default config
+toolguard proxy
+
+# Or specify a custom config file
+toolguard proxy --config /path/to/your/config.json
+
+# Run with debug logging
+toolguard proxy --verbose</code></pre>
+
+                    <p>Your MCP servers are now secured behind ToolGuard. Connect your AI agents to <code>http://localhost:3000</code> instead of directly to the MCP servers.</p>
+                </div>
+
+                <!-- Architecture -->
+                <div class="section">
+                    <h2>🏗️ Architecture Overview</h2>
+                    <p>ToolGuard implements a security-first architecture that sits between AI agents and MCP servers, providing multiple layers of protection.</p>
+
+                    <h3>Core Components</h3>
+                    <ul>
+                        <li><strong>Proxy Server:</strong> The main entry point that intercepts all MCP requests</li>
+                        <li><strong>Security Engine:</strong> Analyzes requests for potential security threats</li>
+                        <li><strong>Credential Manager:</strong> Isolates and manages sensitive credentials</li>
+                        <li><strong>Audit Logger:</strong> Records all activities for compliance and monitoring</li>
+                        <li><strong>Policy Engine:</strong> Enforces custom security rules and policies</li>
+                    </ul>
+
+                    <h3>Request Flow</h3>
+                    <ol>
+                        <li><strong>AI Agent</strong> sends request to ToolGuard proxy</li>
+                        <li><strong>Authentication</strong> validates the agent's identity</li>
+                        <li><strong>Policy Check</strong> ensures request complies with security rules</li>
+                        <li><strong>Threat Analysis</strong> scans for potential security risks</li>
+                        <li><strong>Credential Injection</strong> adds necessary credentials securely</li>
+                        <li><strong>MCP Server</strong> receives the sanitized request</li>
+                        <li><strong>Response Processing</strong> filters and validates the response</li>
+                        <li><strong>Audit Logging</strong> records the complete transaction</li>
+                    </ol>
+
+                    <h3>Security Features</h3>
+                    <ul>
+                        <li><strong>Credential Isolation:</strong> Credentials never exposed to AI agents</li>
+                        <li><strong>Request Sanitization:</strong> Malicious payloads filtered out</li>
+                        <li><strong>Policy Enforcement:</strong> Custom rules for allowed operations</li>
+                        <li><strong>Anomaly Detection:</strong> ML-powered threat detection</li>
+                        <li><strong>Audit Trail:</strong> Complete activity logging</li>
+                        <li><strong>Rate Limiting:</strong> Prevents abuse and DoS attacks</li>
+                    </ul>
+                </div>
+
+                <!-- CLI Reference -->
+                <div class="section">
+                    <h2>⚙️ CLI Reference</h2>
+                    <p>ToolGuard provides three main commands to manage your security proxy:</p>
+
+                    <h3>proxy</h3>
+                    <p>Starts the main ToolGuard proxy server.</p>
+                    <pre><code>toolguard proxy [options]
+
+Options:
+  --config, -c     Path to configuration file (default: ./toolguard.config.json)
+  --port, -p       Port to listen on (default: 3000)
+  --host, -h       Host to bind to (default: localhost)
+  --verbose, -v    Enable verbose logging
+  --daemon, -d     Run as daemon process
+  --pid-file       Path to PID file (daemon mode)
+
+Examples:
+  toolguard proxy
+  toolguard proxy --config prod.config.json --port 8080
+  toolguard proxy --daemon --pid-file /var/run/toolguard.pid</code></pre>
+
+                    <h3>shim</h3>
+                    <p>Creates a transparent shim for existing MCP installations.</p>
+                    <pre><code>toolguard shim [options] &lt;mcp-server-command&gt;
+
+Options:
+  --config, -c     Path to configuration file
+  --output, -o     Output shim script path
+  --template, -t   Shim template to use (bash, powershell, docker)
+
+Examples:
+  toolguard shim "npx @modelcontextprotocol/server-filesystem /data"
+  toolguard shim --template docker "mcp-server --port 3001"
+  toolguard shim --output ./mcp-secure.sh "python mcp-server.py"</code></pre>
+
+                    <h3>poller</h3>
+                    <p>Monitors MCP servers and ToolGuard health status.</p>
+                    <pre><code>toolguard poller [options]
+
+Options:
+  --config, -c     Path to configuration file
+  --interval, -i   Polling interval in seconds (default: 60)
+  --output, -o     Output format (json, text, prometheus)
+  --webhook        Webhook URL for alerts
+  --threshold      Alert threshold for response times (ms)
+
+Examples:
+  toolguard poller --interval 30
+  toolguard poller --output prometheus --webhook https://alerts.example.com
+  toolguard poller --threshold 1000 --output json</code></pre>
+
+                    <h3>Global Options</h3>
+                    <p>These options are available for all commands:</p>
+                    <pre><code>Global Options:
+  --help           Show help information
+  --version        Display version information
+  --quiet, -q      Suppress non-error output
+  --log-file       Path to log file
+  --log-level      Log level (error, warn, info, debug)</code></pre>
+                </div>
+
+                <!-- Full Documentation CTA -->
+                <div class="cta-section">
+                    <h3>Need More Details?</h3>
+                    <p>This is just the beginning. For comprehensive guides, API documentation, and advanced configuration options, visit our complete documentation on GitHub.</p>
+                    <a href="https://github.com/toolguard/toolguard#documentation" class="cta-button">View Full Documentation</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ToolGuard. <a href="/">Home</a> • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • <a href="https://github.com/toolguard/toolguard">GitHub</a></p>
+        </div>
+    </footer>
+</body>
+</html>
