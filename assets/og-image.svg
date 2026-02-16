@@ -1,0 +1,157 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c4a6e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0369a1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shield gradient -->
+    <linearGradient id="shield-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.85" />
+    </linearGradient>
+    
+    <!-- Inner gradient for depth -->
+    <linearGradient id="inner-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c4a6e;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.1" />
+    </linearGradient>
+    
+    <!-- Circuit pattern gradient -->
+    <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c4a6e;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#0369a1;stop-opacity:0.4" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-gradient)"/>
+  
+  <!-- Background pattern overlay -->
+  <g opacity="0.1">
+    <!-- Grid pattern -->
+    <defs>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="630" fill="url(#grid)"/>
+  </g>
+  
+  <!-- Large logo icon (centered-left) -->
+  <g transform="translate(200, 165) scale(1.2)">
+    <!-- Main shield shape -->
+    <path d="M128 24 
+             C140 24 152 28 160 36 
+             C168 28 180 24 192 24 
+             C210 24 224 38 224 56 
+             C224 80 224 104 220 126 
+             C216 148 208 168 194 184 
+             C180 200 162 212 128 232 
+             C94 212 76 200 62 184 
+             C48 168 40 148 36 126 
+             C32 104 32 80 32 56 
+             C32 38 46 24 64 24 
+             C76 24 88 28 96 36 
+             C104 28 116 24 128 24 Z" 
+          fill="url(#shield-gradient)" 
+          stroke="rgba(255,255,255,0.3)" 
+          stroke-width="2"/>
+    
+    <!-- Inner shield for depth -->
+    <path d="M128 36 
+             C138 36 148 39 154 45 
+             C160 39 170 36 180 36 
+             C194 36 206 48 206 62 
+             C206 82 206 102 203 120 
+             C200 138 194 154 183 167 
+             C172 180 158 190 128 206 
+             C98 190 84 180 73 167 
+             C62 154 56 138 53 120 
+             C50 102 50 82 50 62 
+             C50 48 62 36 76 36 
+             C86 36 96 39 102 45 
+             C108 39 118 36 128 36 Z" 
+          fill="url(#inner-gradient)"/>
+    
+    <!-- Circuit pattern overlay -->
+    <g fill="url(#circuit-gradient)" opacity="0.6">
+      <circle cx="128" cy="110" r="6"/>
+      <rect x="126" y="90" width="4" height="14"/>
+      <rect x="126" y="116" width="4" height="14"/>
+      <rect x="108" y="108" width="14" height="4"/>
+      <rect x="134" y="108" width="14" height="4"/>
+      <circle cx="108" cy="90" r="3"/>
+      <circle cx="148" cy="90" r="3"/>
+      <circle cx="108" cy="130" r="3"/>
+      <circle cx="148" cy="130" r="3"/>
+      <rect x="109" y="91" width="17" height="2" transform="rotate(45 117.5 92)"/>
+      <rect x="130" y="91" width="17" height="2" transform="rotate(-45 138.5 92)"/>
+      <rect x="109" y="127" width="17" height="2" transform="rotate(-45 117.5 128)"/>
+      <rect x="130" y="127" width="17" height="2" transform="rotate(45 138.5 128)"/>
+    </g>
+    
+    <!-- Security lock symbol -->
+    <g fill="#0c4a6e" opacity="0.8">
+      <rect x="118" y="150" width="20" height="16" rx="3" ry="3"/>
+      <path d="M122 150 C122 144 125 140 128 140 C131 140 134 144 134 150" 
+            stroke="#0c4a6e" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="128" cy="156" r="2"/>
+      <rect x="127" y="156" width="2" height="4"/>
+    </g>
+    
+    <!-- Checkmark -->
+    <path d="M108 178 L118 188 L148 158" 
+          stroke="#0c4a6e" 
+          stroke-width="4" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+          fill="none" 
+          opacity="0.8"/>
+  </g>
+  
+  <!-- Main Text Content -->
+  <g transform="translate(550, 0)">
+    <!-- ToolGuard Title -->
+    <text x="0" y="250" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
+          font-size="72" font-weight="800" fill="white">ToolGuard</text>
+    
+    <!-- Tagline -->
+    <text x="0" y="320" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
+          font-size="36" font-weight="500" fill="rgba(255,255,255,0.9)">Security proxy for AI agents</text>
+    
+    <!-- Additional descriptive text -->
+    <text x="0" y="380" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
+          font-size="24" font-weight="400" fill="rgba(255,255,255,0.75)">Credential isolation • Policy enforcement • Audit logging</text>
+    
+    <!-- Website -->
+    <text x="0" y="450" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
+          font-size="28" font-weight="600" fill="rgba(255,255,255,0.8)">toolguard.ai</text>
+  </g>
+  
+  <!-- Decorative elements -->
+  <g opacity="0.15">
+    <!-- Circuit-like decorative elements in corners -->
+    <g fill="white">
+      <!-- Top right -->
+      <circle cx="1050" cy="80" r="3"/>
+      <rect x="1048" y="60" width="4" height="16"/>
+      <rect x="1030" y="78" width="16" height="4"/>
+      
+      <circle cx="1120" cy="120" r="2"/>
+      <rect x="1118" y="105" width="4" height="12"/>
+      <rect x="1105" y="118" width="12" height="4"/>
+      
+      <!-- Bottom left -->
+      <circle cx="100" cy="520" r="3"/>
+      <rect x="98" y="505" width="4" height="12"/>
+      <rect x="85" y="518" width="12" height="4"/>
+      
+      <circle cx="150" cy="570" r="2"/>
+      <rect x="148" y="560" width="4" height="8"/>
+      <rect x="140" y="568" width="8" height="4"/>
+    </g>
+  </g>
+</svg>
