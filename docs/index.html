@@ -87,7 +87,7 @@
         .cta-button:hover { background: var(--brand-700); color: white; }
 
         /* Footer */
-        .footer { background: #111827; color: #d1d5db; padding: 2rem 0; text-align: center; }
+        .footer { background: #111827; color: #d1d5db; padding: 2.5rem 1.5rem; text-align: center; }
         .footer a { color: var(--brand-400); }
         .footer a:hover { color: var(--brand-300); }
     </style>
@@ -300,7 +300,14 @@ Examples:
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 ToolGuard. <a href="/">Home</a> • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • <a href="https://github.com/toolguard/toolguard">GitHub</a></p>
+            <div class="footer-inner" style="display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center;">
+                <div class="footer-links" style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;font-size:0.875rem;">
+                    <a href="/terms.html" style="color:#9ca3af;transition:color 0.2s;" onmouseover="this.style.color='#d1d5db'" onmouseout="this.style.color='#9ca3af'">Terms of Service</a>
+                    <a href="/privacy.html" style="color:#9ca3af;transition:color 0.2s;" onmouseover="this.style.color='#d1d5db'" onmouseout="this.style.color='#9ca3af'">Privacy Policy</a>
+                    <a href="mailto:support@toolguard.ai" style="color:#9ca3af;transition:color 0.2s;" onmouseover="this.style.color='#d1d5db'" onmouseout="this.style.color='#9ca3af'">Contact</a>
+                </div>
+                <p class="copyright" style="font-size:0.875rem;">&copy; 2026 Elixie, LLC. All rights reserved. ToolGuard is a product of Elixie, LLC.</p>
+            </div>
         </div>
     </footer>
 <script src="/assets/cookie-consent.js"></script>
