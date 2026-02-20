@@ -1,0 +1,41 @@
+name: Deploy to toolguard.ai
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy via rsync
+        run: |
+          rsync -avzr --delete \
+            --exclude='.git*' \
+            --exclude='.github' \
+            --exclude='README.md' \
+            --exclude='BRAND.md' \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+            ./ \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}/
+
+      - name: Verify deployment
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://toolguard.ai)
+          echo "toolguard.ai HTTP status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "Deployment verification failed: expected 200, got $STATUS"
+            exit 1
+          fi
+          echo "✅ Deployment successful — toolguard.ai is live"
