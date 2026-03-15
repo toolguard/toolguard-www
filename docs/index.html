@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation — ToolGuard</title>
-    <meta name="description" content="ToolGuard documentation: Quick start guide, architecture overview, and CLI reference for the security proxy.">
+    <meta name="description" content="ToolGuard documentation: Quick start guide, architecture overview, and CLI reference for the security gateway.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -128,7 +128,7 @@
     <section class="hero">
         <div class="container">
             <h1>Documentation</h1>
-            <p>Everything you need to get started with ToolGuard — the security proxy for MCP servers</p>
+            <p>Everything you need to get started with ToolGuard — the security gateway for MCP servers</p>
         </div>
     </section>
 
@@ -174,7 +174,7 @@ npm run build</code></pre>
 }</code></pre>
 
                     <h3>Running ToolGuard</h3>
-                    <p>Start the ToolGuard proxy server:</p>
+                    <p>Start the ToolGuard gateway server:</p>
                     <pre><code># Start with default config
 toolguard proxy
 
@@ -194,7 +194,7 @@ toolguard proxy --verbose</code></pre>
 
                     <h3>Core Components</h3>
                     <ul>
-                        <li><strong>Proxy Server:</strong> The main entry point that intercepts all MCP requests</li>
+                        <li><strong>Gateway Server:</strong> The main entry point that intercepts all MCP requests</li>
                         <li><strong>Security Engine:</strong> Analyzes requests for potential security threats</li>
                         <li><strong>Credential Manager:</strong> Isolates and manages sensitive credentials</li>
                         <li><strong>Audit Logger:</strong> Records all activities for compliance and monitoring</li>
@@ -203,7 +203,7 @@ toolguard proxy --verbose</code></pre>
 
                     <h3>Request Flow</h3>
                     <ol>
-                        <li><strong>AI Agent</strong> sends request to ToolGuard proxy</li>
+                        <li><strong>AI Agent</strong> sends request to ToolGuard gateway</li>
                         <li><strong>Authentication</strong> validates the agent's identity</li>
                         <li><strong>Policy Check</strong> ensures request complies with security rules</li>
                         <li><strong>Threat Analysis</strong> scans for potential security risks</li>
@@ -227,10 +227,10 @@ toolguard proxy --verbose</code></pre>
                 <!-- CLI Reference -->
                 <div class="section">
                     <h2>⚙️ CLI Reference</h2>
-                    <p>ToolGuard provides three main commands to manage your security proxy:</p>
+                    <p>ToolGuard provides three main commands to manage your security gateway:</p>
 
                     <h3>proxy</h3>
-                    <p>Starts the main ToolGuard proxy server.</p>
+                    <p>Starts the main ToolGuard gateway server.</p>
                     <pre><code>toolguard proxy [options]
 
 Options:
@@ -247,13 +247,13 @@ Examples:
   toolguard proxy --daemon --pid-file /var/run/toolguard.pid</code></pre>
 
                     <h3>shim</h3>
-                    <p>Creates a transparent shim for existing MCP installations.</p>
+                    <p>Creates a transparent connector for existing MCP installations.</p>
                     <pre><code>toolguard shim [options] &lt;mcp-server-command&gt;
 
 Options:
   --config, -c     Path to configuration file
-  --output, -o     Output shim script path
-  --template, -t   Shim template to use (bash, powershell, docker)
+  --output, -o     Output connector script path
+  --template, -t   Connector template to use (bash, powershell, docker)
 
 Examples:
   toolguard shim "npx @modelcontextprotocol/server-filesystem /data"

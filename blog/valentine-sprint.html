@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Valentine's Day Sprint — ToolGuard Blog</title>
-    <meta name="description" content="How we built ToolGuard in one intense day — from zero to security proxy in 24 hours.">
+    <meta name="description" content="How we built ToolGuard in one intense day — from zero to security gateway in 24 hours.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -13,7 +13,7 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="The Valentine's Day Sprint — ToolGuard Blog">
-    <meta property="og:description" content="How we built ToolGuard in one intense day — from zero to security proxy in 24 hours.">
+    <meta property="og:description" content="How we built ToolGuard in one intense day — from zero to security gateway in 24 hours.">
     <meta property="og:image" content="/assets/og-image.png">
     <meta property="og:url" content="https://toolguard.ai/blog/valentine-sprint.html">
     
@@ -123,7 +123,7 @@
                 <span class="article-category">Behind the Scenes</span>
             </div>
             <h1 class="article-title">The Valentine's Day Sprint</h1>
-            <p class="article-subtitle">How we built ToolGuard in one intense day — from zero to security proxy in 24 hours.</p>
+            <p class="article-subtitle">How we built ToolGuard in one intense day — from zero to security gateway in 24 hours.</p>
             
             <div class="article-author">
                 <div class="author-avatar">👨‍💻</div>
@@ -157,12 +157,12 @@
 
             <h2>The Architecture</h2>
 
-            <p>The core insight was simple: we needed a security proxy that could sit between AI agents and MCP servers, providing a policy layer without breaking the existing ecosystem. The agent thinks it's talking to a regular MCP server, but in reality, every request flows through our security engine.</p>
+            <p>The core insight was simple: we needed a security gateway that could sit between AI agents and MCP servers, providing a policy layer without breaking the existing ecosystem. The agent thinks it's talking to a regular MCP server, but in reality, every request flows through our security engine.</p>
 
             <p>We settled on a three-component architecture:</p>
             <ul>
-                <li><strong>ToolGuard Proxy:</strong> The brain — handles credentials, policies, logging, and anomaly detection</li>
-                <li><strong>ToolGuard Shim:</strong> The adapter — presents as a standard MCP server to the AI agent</li>
+                <li><strong>ToolGuard Gateway:</strong> The brain — handles credentials, policies, logging, and anomaly detection</li>
+                <li><strong>ToolGuard Connector:</strong> The adapter — presents as a standard MCP server to the AI agent</li>
                 <li><strong>Plugin System:</strong> Service-specific adapters for Google Workspace, Slack, GitHub, etc.</li>
             </ul>
 
@@ -170,11 +170,11 @@
 
             <p>What followed was a blur of code, coffee, and constant iteration. We divided into three teams:</p>
 
-            <h3>Team Proxy (8 AM - 2 PM)</h3>
-            <p>Built the core proxy server with credential management and policy engine. The biggest challenge was designing a flexible policy language that could handle everything from rate limiting to content filtering without becoming too complex.</p>
+            <h3>Team Gateway (8 AM - 2 PM)</h3>
+            <p>Built the core gateway server with credential management and policy engine. The biggest challenge was designing a flexible policy language that could handle everything from rate limiting to content filtering without becoming too complex.</p>
 
-            <h3>Team Shim (2 PM - 8 PM)</h3>
-            <p>Created the MCP adapter that makes ToolGuard invisible to AI agents. This meant implementing the full MCP specification while transparently routing requests through our proxy. The devil was in the details — handling streaming responses, error propagation, and maintaining perfect protocol compatibility.</p>
+            <h3>Team Connector (2 PM - 8 PM)</h3>
+            <p>Created the MCP adapter that makes ToolGuard invisible to AI agents. This meant implementing the full MCP specification while transparently routing requests through our gateway. The devil was in the details — handling streaming responses, error propagation, and maintaining perfect protocol compatibility.</p>
 
             <h3>Team Dashboard (8 PM - 12 AM)</h3>
             <p>Built a web interface for configuration and monitoring. Real-time audit logs, policy management, and anomaly detection dashboards. We wanted something that would give security teams immediate visibility into AI behavior.</p>
@@ -190,7 +190,7 @@
             <p>As February 14th turned into February 15th, we pushed the first version to GitHub. 24 hours from whiteboard to working code. The initial release included:</p>
 
             <ul>
-                <li>Core proxy and shim components</li>
+                <li>Core gateway and connector components</li>
                 <li>Google Workspace plugin (Gmail, Calendar, Drive)</li>
                 <li>Policy engine with rate limiting and access controls</li>
                 <li>Audit logging and real-time monitoring</li>
