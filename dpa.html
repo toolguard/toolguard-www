@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Processing Agreement — ToolGuard</title>
+    <meta name="description" content="ToolGuard's Data Processing Agreement (DPA) for GDPR compliance and enterprise customers.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/favicon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #111827; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; }
+        
+        :root {
+            --brand-50: #f0f9ff; --brand-100: #e0f2fe; --brand-200: #bae6fd;
+            --brand-300: #7dd3fc; --brand-400: #38bdf8; --brand-500: #0ea5e9;
+            --brand-600: #0284c7; --brand-700: #0369a1; --brand-800: #075985;
+            --brand-900: #0c4a6e;
+        }
+
+        .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* Nav */
+        .nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #f3f4f6; z-index: 50; }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; max-width: 72rem; margin: 0 auto; }
+        .nav-logo { display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem; font-weight: 700; color: #111827; }
+        .nav-logo-icon { width: 2rem; height: 2rem; border-radius: 0.5rem; background: linear-gradient(135deg, #0c4a6e, #0ea5e9); display: flex; align-items: center; justify-content: center; }
+        .nav-links { display: none; align-items: center; gap: 2rem; }
+        .nav-links a { font-size: 0.875rem; color: #4b5563; transition: color 0.2s; }
+        .nav-links a:hover { color: #111827; }
+        .nav-cta { padding: 0.5rem 1rem; background: var(--brand-600); color: #ffffff !important; font-size: 0.875rem; font-weight: 600; border-radius: 0.5rem; transition: background 0.2s; }
+        .nav-cta:hover { background: var(--brand-700); color: #ffffff !important; }
+        @media (min-width: 768px) { .nav-links { display: flex; } }
+
+        /* Content */
+        .legal-content { padding: 8rem 1.5rem 4rem; max-width: 48rem; margin: 0 auto; }
+        .legal-header { margin-bottom: 3rem; text-align: center; }
+        .legal-title { font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem; }
+        .legal-updated { font-size: 0.875rem; color: #6b7280; }
+        
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--brand-600); font-size: 0.875rem; font-weight: 500; margin-bottom: 2rem; transition: color 0.2s; }
+        .back-link:hover { color: var(--brand-700); }
+
+        .legal-section { margin-bottom: 2.5rem; }
+        .legal-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #111827; }
+        .legal-section h3 { font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: #111827; }
+        .legal-section p { margin-bottom: 1rem; line-height: 1.7; color: #374151; }
+        .legal-section ul, .legal-section ol { margin: 1rem 0; padding-left: 1.5rem; }
+        .legal-section li { margin: 0.5rem 0; line-height: 1.7; color: #374151; }
+        .legal-section a { color: var(--brand-600); text-decoration: underline; }
+        .legal-section a:hover { color: var(--brand-700); }
+
+        .contact-info { background: var(--brand-50); padding: 1.5rem; border-radius: 0.75rem; margin-top: 2rem; }
+        .contact-info h3 { color: var(--brand-900); margin-bottom: 0.75rem; }
+        .contact-info p { color: var(--brand-800); }
+
+        /* Sub-processor table */
+        .sp-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.875rem; }
+        .sp-table th { background: var(--brand-50); color: var(--brand-900); font-weight: 600; text-align: left; padding: 0.625rem 0.875rem; border: 1px solid var(--brand-200); }
+        .sp-table td { padding: 0.625rem 0.875rem; border: 1px solid #e5e7eb; color: #374151; vertical-align: top; }
+        .sp-table tr:nth-child(even) td { background: #f9fafb; }
+
+        /* Footer */
+        .footer { padding: 3rem 1.5rem; background: #111827; color: #9ca3af; margin-top: 4rem; }
+        .footer .copyright { font-size: 0.875rem; text-align: center; }
+        
+        @media (min-width: 640px) { .legal-title { font-size: 3rem; } }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg width="20" height="20" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                ToolGuard
+            </a>
+            <div class="nav-links">
+                <a href="/#features">Features</a>
+                <a href="/#how-it-works">How It Works</a>
+                <a href="/pricing.html">Pricing</a>
+                <a href="https://github.com/toolguard/toolguard">GitHub</a>
+                <a href="https://app.toolguard.ai" class="nav-cta">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="legal-content">
+        <a href="/" class="back-link">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Back to ToolGuard
+        </a>
+        
+        <header class="legal-header">
+            <h1 class="legal-title">Data Processing Agreement</h1>
+            <p class="legal-updated">Effective Date: March 14, 2026 | Last Updated: March 14, 2026</p>
+        </header>
+
+        <div class="legal-section">
+            <p>This Data Processing Agreement ("DPA") forms part of the agreement between <strong>Elixie, LLC</strong> ("ToolGuard," "Processor," "we," "us") and the customer entity ("Controller," "you") that has agreed to our <a href="/terms.html">Terms of Service</a>. This DPA governs the processing of personal data by ToolGuard on behalf of the Controller in connection with the ToolGuard service, and is intended to satisfy the requirements of <strong>GDPR Article 28</strong> and applicable data protection laws.</p>
+            <p>By using ToolGuard, you acknowledge that you have read and agree to this DPA. For enterprise customers requiring a signed DPA, please contact <a href="mailto:privacy@toolguard.ai">privacy@toolguard.ai</a>.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>1. Definitions</h2>
+            <p>For the purposes of this DPA, the following terms have the meanings set out below:</p>
+            <ul>
+                <li><strong>"Controller"</strong> means the natural or legal person, public authority, agency, or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data. In the context of this DPA, the Controller is you, the ToolGuard customer.</li>
+                <li><strong>"Processor"</strong> means a natural or legal person, public authority, agency, or other body which processes personal data on behalf of the Controller. In the context of this DPA, the Processor is Elixie, LLC (ToolGuard).</li>
+                <li><strong>"Personal Data"</strong> means any information relating to an identified or identifiable natural person ("data subject"), including but not limited to names, email addresses, IP addresses, usage logs, and authentication data processed through the ToolGuard service.</li>
+                <li><strong>"Processing"</strong> means any operation or set of operations performed on personal data, including collection, recording, storage, use, disclosure, or deletion.</li>
+                <li><strong>"Sub-processor"</strong> means any third party engaged by ToolGuard to process personal data in connection with delivering the service.</li>
+                <li><strong>"GDPR"</strong> means Regulation (EU) 2016/679 of the European Parliament and of the Council (General Data Protection Regulation).</li>
+                <li><strong>"SCCs"</strong> means the Standard Contractual Clauses for the transfer of personal data to third countries pursuant to GDPR, as issued by the European Commission.</li>
+                <li><strong>"Service"</strong> means the ToolGuard security proxy platform, including the hosted proxy, shim, dashboard, and related services offered at toolguard.ai.</li>
+            </ul>
+        </div>
+
+        <div class="legal-section">
+            <h2>2. Scope of Processing</h2>
+            <p>ToolGuard processes personal data solely to the extent necessary to provide the Service. The categories of personal data processed include:</p>
+            <ul>
+                <li><strong>Account data:</strong> Email addresses used to create and manage ToolGuard accounts (including OAuth-linked email addresses from Google and GitHub).</li>
+                <li><strong>Audit logs:</strong> Records of tool calls made through the ToolGuard proxy, including timestamps, tool names, request metadata, and policy decisions. These logs may contain personal data passed through connected MCP servers (e.g., email subjects, contact names) depending on the services the Controller has connected.</li>
+                <li><strong>Usage data:</strong> Service interaction data, including API request counts, feature usage patterns, and error logs used for diagnostics and service improvement.</li>
+                <li><strong>Billing data:</strong> Name and email address associated with payment records, processed via Stripe. Full payment card data is handled exclusively by Stripe and is not stored by ToolGuard.</li>
+                <li><strong>Authentication tokens:</strong> Encrypted OAuth tokens and API credentials stored in the ToolGuard vault for connected services. These are stored in encrypted form and are not accessible in plaintext by ToolGuard staff.</li>
+            </ul>
+            <p>ToolGuard acts as a Processor with respect to personal data it processes on the Controller's behalf through the Service. Where ToolGuard processes personal data for its own purposes (e.g., account management, billing), it acts as an independent Controller as described in the <a href="/privacy.html">Privacy Policy</a>.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>3. Purposes of Processing</h2>
+            <p>ToolGuard processes personal data for the following purposes, each of which is necessary for the performance of the Service:</p>
+            <ul>
+                <li><strong>Service delivery:</strong> Authenticating users, routing tool calls through the proxy, enforcing access policies, and returning results to AI agents.</li>
+                <li><strong>Security monitoring:</strong> Maintaining audit logs, detecting anomalous behavior, enforcing policy rules, and enabling Controller-initiated access reviews and revocations.</li>
+                <li><strong>Billing and account management:</strong> Processing subscription payments, managing account lifecycle, and communicating service-related notices.</li>
+                <li><strong>Service improvement and diagnostics:</strong> Aggregated, de-identified usage analytics to improve reliability and performance. ToolGuard does not use personal data in audit logs for model training.</li>
+            </ul>
+        </div>
+
+        <div class="legal-section">
+            <h2>4. Sub-processors</h2>
+            <p>ToolGuard engages the following sub-processors to assist in delivering the Service. Each sub-processor is bound by contractual obligations consistent with this DPA and applicable data protection law.</p>
+
+            <table class="sp-table">
+                <thead>
+                    <tr>
+                        <th>Sub-processor</th>
+                        <th>Role</th>
+                        <th>Location</th>
+                        <th>Data Processed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Neon</strong> (Neon Inc.)</td>
+                        <td>Database (PostgreSQL hosting)</td>
+                        <td>United States</td>
+                        <td>Account data, audit logs, encrypted credentials, usage data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hetzner</strong> (Hetzner Online GmbH)</td>
+                        <td>Cloud infrastructure / hosting</td>
+                        <td>Germany / EU</td>
+                        <td>All service data processed on hosted infrastructure</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stripe</strong> (Stripe, Inc.)</td>
+                        <td>Payment processing</td>
+                        <td>United States</td>
+                        <td>Billing name, email address, payment card data (handled exclusively by Stripe)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google</strong> (Google LLC)</td>
+                        <td>OAuth authentication; Gmail/Google Workspace API access (when enabled by Controller)</td>
+                        <td>United States</td>
+                        <td>OAuth tokens, email addresses, Google Workspace data (only when Controller connects Gmail)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GitHub</strong> (GitHub, Inc.)</td>
+                        <td>OAuth authentication; GitHub API access (when enabled by Controller)</td>
+                        <td>United States</td>
+                        <td>OAuth tokens, GitHub usernames (only when Controller connects GitHub)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>ToolGuard will notify the Controller of any intended changes to sub-processors (additions or replacements) with reasonable advance notice, providing the Controller an opportunity to object. Notification will be made via email or through a notice in the Service dashboard.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>5. Processor Obligations</h2>
+            <p>ToolGuard, as Processor, shall:</p>
+            <ul>
+                <li>Process personal data only on documented instructions from the Controller, including with regard to transfers of personal data to a third country, unless required to do so by applicable law.</li>
+                <li>Ensure that persons authorized to process personal data have committed themselves to confidentiality or are under an appropriate statutory obligation of confidentiality.</li>
+                <li>Implement and maintain appropriate technical and organizational security measures as set out in Section 6 of this DPA.</li>
+                <li>Not engage sub-processors without prior written authorization from the Controller (which is granted by the Controller's acceptance of this DPA for the sub-processors listed in Section 4).</li>
+                <li>Assist the Controller in fulfilling its obligations to respond to data subject rights requests, as set out in Section 7 of this DPA.</li>
+                <li>Assist the Controller with security obligations, breach notification, data protection impact assessments, and prior consultations, taking into account the nature of processing and information available to ToolGuard.</li>
+                <li>Delete or return all personal data to the Controller after the end of the provision of services, in accordance with the retention policy in Section 8 of this DPA.</li>
+                <li>Make available all information necessary to demonstrate compliance with GDPR Article 28 and allow for and contribute to audits and inspections by the Controller or a mandated auditor, subject to reasonable notice and confidentiality obligations.</li>
+            </ul>
+        </div>
+
+        <div class="legal-section">
+            <h2>6. Security Measures</h2>
+            <p>ToolGuard implements the following technical and organizational measures to protect personal data:</p>
+
+            <h3>6.1 Encryption</h3>
+            <ul>
+                <li><strong>At rest:</strong> All credentials and sensitive vault data are encrypted using AES-256-GCM. Database-level encryption is applied via Neon's encrypted storage.</li>
+                <li><strong>In transit:</strong> All communications between users, the ToolGuard proxy, and connected services are encrypted using TLS 1.2 or higher.</li>
+            </ul>
+
+            <h3>6.2 Access Controls</h3>
+            <ul>
+                <li>Access to production systems is restricted to authorized ToolGuard personnel on a need-to-know basis.</li>
+                <li>Multi-factor authentication is required for administrative access to infrastructure.</li>
+                <li>OAuth tokens and API credentials are stored in an encrypted vault and are never exposed in plaintext to ToolGuard staff or AI agents.</li>
+            </ul>
+
+            <h3>6.3 Audit Logging and Monitoring</h3>
+            <ul>
+                <li>All tool calls proxied through ToolGuard are logged with metadata including timestamp, tool name, policy decision, and outcome.</li>
+                <li>Infrastructure access and administrative actions are logged for security review.</li>
+            </ul>
+
+            <h3>6.4 Incident Response</h3>
+            <ul>
+                <li>In the event of a personal data breach, ToolGuard will notify the Controller without undue delay and in any case within 72 hours of becoming aware of the breach, to enable the Controller to meet its notification obligations under GDPR Article 33.</li>
+                <li>Breach notifications will be sent to the email address associated with the Controller's ToolGuard account, and to <a href="mailto:privacy@toolguard.ai">privacy@toolguard.ai</a> for enterprise DPA customers.</li>
+            </ul>
+
+            <h3>6.5 Organizational Measures</h3>
+            <ul>
+                <li>ToolGuard maintains internal data protection policies and conducts periodic reviews of security practices.</li>
+                <li>Personnel handling personal data receive appropriate training on data protection obligations.</li>
+            </ul>
+        </div>
+
+        <div class="legal-section">
+            <h2>7. Data Subject Rights</h2>
+            <p>ToolGuard will assist the Controller in fulfilling data subject requests relating to personal data processed under this DPA. Data subjects seeking to exercise their rights (access, rectification, erasure, restriction, portability, or objection) should refer to the <a href="/privacy.html">ToolGuard Privacy Policy</a> for guidance, or contact <a href="mailto:privacy@toolguard.ai">privacy@toolguard.ai</a>.</p>
+            <p>Where a data subject contacts ToolGuard directly regarding a request that can only be fulfilled by the Controller, ToolGuard will promptly forward the request to the Controller.</p>
+            <p>ToolGuard provides Controllers with self-service tools to delete account data, revoke connected service credentials, and export audit logs through the Service dashboard, enabling Controllers to respond to data subject requests without requiring ToolGuard staff involvement in most cases.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>8. Data Retention</h2>
+            <p>ToolGuard retains personal data for the following periods, after which data is securely deleted:</p>
+            <ul>
+                <li><strong>Billing records:</strong> Retained for 7 years from the date of the transaction, as required by applicable financial and tax regulations.</li>
+                <li><strong>Audit logs:</strong> Retained for 90 days from the date of the tool call. Controllers on Enterprise plans may request custom retention periods.</li>
+                <li><strong>Connected service credentials (OAuth tokens / API keys):</strong> Deleted immediately upon the Controller or user disconnecting the relevant service through the dashboard, or upon account termination.</li>
+                <li><strong>Account data:</strong> Retained for the duration of the account, plus 30 days following account closure to allow for reactivation. After 30 days, account data is permanently deleted, except where retention is required by law.</li>
+            </ul>
+            <p>Upon written request by the Controller, ToolGuard will confirm deletion of specific data categories within 30 days of receiving the request.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>9. International Data Transfers</h2>
+            <p>ToolGuard is headquartered in the United States. When personal data originating in the European Economic Area (EEA), United Kingdom, or Switzerland is transferred to the United States or other countries outside the EEA, ToolGuard relies on the following transfer mechanisms:</p>
+            <ul>
+                <li><strong>Standard Contractual Clauses (SCCs):</strong> For transfers of EEA personal data to ToolGuard in the United States, the parties agree that the Module Two (Controller to Processor) Standard Contractual Clauses adopted by the European Commission Decision (EU) 2021/914 are incorporated into this DPA by reference and apply to such transfers. The SCCs are supplemented by the technical and organizational measures described in Section 6 of this DPA.</li>
+                <li><strong>Sub-processor transfers:</strong> ToolGuard ensures that its sub-processors (listed in Section 4) have implemented appropriate transfer mechanisms for any onward transfer of EEA personal data, including SCCs or other approved safeguards.</li>
+            </ul>
+            <p>Controllers who require a signed copy of the applicable SCCs or supplementary transfer impact assessments should contact <a href="mailto:privacy@toolguard.ai">privacy@toolguard.ai</a>.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>10. Governing Law and Compliance</h2>
+            <p>This DPA is governed by the laws of the <strong>State of California</strong>, consistent with the governing law provisions of ToolGuard's <a href="/terms.html">Terms of Service</a>, without regard to conflict of law principles. Where applicable, this DPA is intended to be compliant with <strong>GDPR Article 28</strong> and the requirements of other applicable data protection laws, including the California Consumer Privacy Act (CCPA).</p>
+            <p>In the event of any conflict between this DPA and the Terms of Service with respect to the subject matter of data processing, this DPA shall prevail.</p>
+            <p>If any provision of this DPA is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.</p>
+        </div>
+
+        <div class="legal-section">
+            <h2>11. Term and Termination</h2>
+            <p>This DPA takes effect on the date the Controller accepts the Terms of Service (or the date of a separately signed DPA, if applicable) and remains in effect for as long as ToolGuard processes personal data on the Controller's behalf.</p>
+            <p>Upon termination of the Terms of Service, ToolGuard will, at the Controller's election, delete or return personal data in accordance with Section 8 of this DPA, unless applicable law requires continued storage of the data.</p>
+        </div>
+
+        <div class="contact-info">
+            <h3>DPA Contact &amp; Requests</h3>
+            <p>For DPA execution requests, data subject rights inquiries, sub-processor notifications, or data breach notifications, please contact:</p>
+            <p><strong>Elixie, LLC — Data Privacy</strong><br>
+            5044 Edinger Avenue<br>
+            Huntington Beach, CA 92649<br>
+            <a href="mailto:privacy@toolguard.ai" style="color:var(--brand-600);">privacy@toolguard.ai</a></p>
+            <p>ToolGuard is a product of Elixie, LLC. For general support, contact <a href="mailto:support@toolguard.ai" style="color:var(--brand-600);">support@toolguard.ai</a>.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p style="font-size:0.8125rem;text-align:center;margin-bottom:0.75rem;">
+                Questions? <a href="mailto:privacy@toolguard.ai" style="color:#9ca3af;text-decoration:underline;">privacy@toolguard.ai</a>
+                &nbsp;·&nbsp; <a href="/privacy.html" style="color:#9ca3af;text-decoration:underline;">Privacy Policy</a>
+                &nbsp;·&nbsp; <a href="/terms.html" style="color:#9ca3af;text-decoration:underline;">Terms of Service</a>
+            </p>
+            <p class="copyright">&copy; 2026 Elixie, LLC &mdash; 5044 Edinger Ave, Huntington Beach, CA 92649, California, USA &mdash; All rights reserved.</p>
+        </div>
+    </footer>
+
+<script src="/assets/cookie-consent.js"></script>
+</body>
+</html>
