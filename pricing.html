@@ -255,7 +255,7 @@
         }
         @media (min-width: 768px) {
             .footer { padding: 3rem 1.5rem; }
-            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr 1fr; }
             .footer-brand { grid-column: auto; margin-bottom: 0; }
             .footer-brand .logo span { font-size: 1.125rem; }
             .footer-brand p { font-size: 0.875rem; }
@@ -265,6 +265,26 @@
             .footer hr { margin: 2rem 0; }
             .footer .copyright { font-size: 0.875rem; }
         }
+
+        /* Statement notice */
+        .statement-notice {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 0.75rem;
+            line-height: 1.4;
+        }
+
+        /* Pricing compliance note */
+        .pricing-compliance-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8125rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        .pricing-compliance-note a { color: var(--brand-600); text-decoration: underline; }
+        .pricing-compliance-note a:hover { color: var(--brand-700); }
     </style>
 </head>
 <body>
@@ -391,6 +411,7 @@
                         </li>
                     </ul>
                     <a href="https://app.toolguard.ai" class="card-btn filled">Get Started</a>
+                    <p class="statement-notice">Charges will appear on your statement as <strong>TOOLGUARD</strong></p>
                 </div>
 
                 <!-- Enterprise -->
@@ -435,6 +456,8 @@
                 </div>
 
             </div>
+            <p class="statement-notice" style="max-width:48rem;margin-left:auto;margin-right:auto;margin-top:1.5rem;">Charges for paid plans will appear on your statement as <strong>TOOLGUARD</strong>.</p>
+            <p class="pricing-compliance-note">All prices in USD · Annual plans refundable within 30 days. Monthly plans are non-refundable. Cancel anytime &mdash; no fees.<br>See our <a href="/terms.html#cancellation">Terms of Service</a> or email <a href="mailto:support@toolguard.ai">support@toolguard.ai</a> for billing questions.</p>
         </div>
     </section>
 
@@ -538,9 +561,17 @@
                         <li><a href="/terms.html">Terms of Service</a></li>
                     </ul>
                 </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="mailto:support@toolguard.ai">support@toolguard.ai</a></li>
+                        <li><a href="/terms.html#cancellation">Refund Policy</a></li>
+                        <li><a href="/terms.html#cancellation">Cancellation Policy</a></li>
+                    </ul>
+                </div>
             </div>
             <hr>
-            <p class="copyright">&copy; 2026 Elixie, LLC &mdash; 5044 Edinger Ave, Huntington Beach, CA 92649 &mdash; All rights reserved.</p>
+            <p class="copyright">&copy; 2026 Elixie, LLC &mdash; 5044 Edinger Ave, Huntington Beach, CA 92649, California, USA &mdash; All rights reserved.</p>
         </div>
     </footer>
 
