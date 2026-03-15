@@ -123,7 +123,7 @@
                 <li><strong>"Sub-processor"</strong> means any third party engaged by ToolGuard to process personal data in connection with delivering the service.</li>
                 <li><strong>"GDPR"</strong> means Regulation (EU) 2016/679 of the European Parliament and of the Council (General Data Protection Regulation).</li>
                 <li><strong>"SCCs"</strong> means the Standard Contractual Clauses for the transfer of personal data to third countries pursuant to GDPR, as issued by the European Commission.</li>
-                <li><strong>"Service"</strong> means the ToolGuard security proxy platform, including the hosted proxy, shim, dashboard, and related services offered at toolguard.ai.</li>
+                <li><strong>"Service"</strong> means the ToolGuard security gateway platform, including the hosted gateway, connector, dashboard, and related services offered at toolguard.ai.</li>
             </ul>
         </div>
 
@@ -132,7 +132,7 @@
             <p>ToolGuard processes personal data solely to the extent necessary to provide the Service. The categories of personal data processed include:</p>
             <ul>
                 <li><strong>Account data:</strong> Email addresses used to create and manage ToolGuard accounts (including OAuth-linked email addresses from Google and GitHub).</li>
-                <li><strong>Audit logs:</strong> Records of tool calls made through the ToolGuard proxy, including timestamps, tool names, request metadata, and policy decisions. These logs may contain personal data passed through connected MCP servers (e.g., email subjects, contact names) depending on the services the Controller has connected.</li>
+                <li><strong>Audit logs:</strong> Records of tool calls made through the ToolGuard gateway, including timestamps, tool names, request metadata, and policy decisions. These logs may contain personal data passed through connected MCP servers (e.g., email subjects, contact names) depending on the services the Controller has connected.</li>
                 <li><strong>Usage data:</strong> Service interaction data, including API request counts, feature usage patterns, and error logs used for diagnostics and service improvement.</li>
                 <li><strong>Billing data:</strong> Name and email address associated with payment records, processed via Stripe. Full payment card data is handled exclusively by Stripe and is not stored by ToolGuard.</li>
                 <li><strong>Authentication tokens:</strong> Encrypted OAuth tokens and API credentials stored in the ToolGuard vault for connected services. These are stored in encrypted form and are not accessible in plaintext by ToolGuard staff.</li>
@@ -223,7 +223,7 @@
             <h3>6.1 Encryption</h3>
             <ul>
                 <li><strong>At rest:</strong> All credentials and sensitive vault data are encrypted using AES-256-GCM. Database-level encryption is applied via Neon's encrypted storage.</li>
-                <li><strong>In transit:</strong> All communications between users, the ToolGuard proxy, and connected services are encrypted using TLS 1.2 or higher.</li>
+                <li><strong>In transit:</strong> All communications between users, the ToolGuard gateway, and connected services are encrypted using TLS 1.2 or higher.</li>
             </ul>
 
             <h3>6.2 Access Controls</h3>

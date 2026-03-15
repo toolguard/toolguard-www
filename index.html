@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolGuard — Security Proxy for MCP Servers</title>
+    <title>ToolGuard — Security Gateway for MCP Servers</title>
     <meta name="description" content="ToolGuard securely connects AI agents to your services — Gmail, GitHub, and more — with credential isolation, policy enforcement, and a full audit log.">
     
     <!-- Favicon -->
@@ -12,15 +12,15 @@
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ToolGuard — Security Proxy for MCP Servers">
-    <meta property="og:description" content="Open-source security proxy for AI agents. Credential isolation, policy enforcement, audit logging, and anomaly detection for MCP servers.">
+    <meta property="og:title" content="ToolGuard — Security Gateway for MCP Servers">
+    <meta property="og:description" content="Open-source security gateway for AI agents. Credential isolation, policy enforcement, audit logging, and anomaly detection for MCP servers.">
     <meta property="og:image" content="/assets/og-image.svg">
     <meta property="og:url" content="https://toolguard.ai">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ToolGuard — Security Proxy for MCP Servers">
-    <meta name="twitter:description" content="Open-source security proxy for AI agents. Credential isolation, policy enforcement, audit logging, and anomaly detection for MCP servers.">
+    <meta name="twitter:title" content="ToolGuard — Security Gateway for MCP Servers">
+    <meta name="twitter:description" content="Open-source security gateway for AI agents. Credential isolation, policy enforcement, audit logging, and anomaly detection for MCP servers.">
     <meta name="twitter:image" content="/assets/og-image.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -416,7 +416,7 @@
             <span class="hero-badge-dot"></span>
             Open Source
         </div>
-        <h1>Security proxy for <span class="accent">AI agents</span> accessing your tools</h1>
+        <h1>Security gateway for <span class="accent">AI agents</span> accessing your tools</h1>
         <p class="subtitle">Give Claude or Cursor access to Gmail, GitHub, and more — without handing over your credentials. ToolGuard isolates secrets, enforces policy, and logs every tool call your AI makes.</p>
         <div class="cta-row">
             <a href="https://app.toolguard.ai" class="btn-primary">Get Started Free</a>
@@ -444,14 +444,14 @@
                 <div class="arch-arrow desktop-horizontal">→</div>
                 <div class="arch-node shim animate">
                     <div class="emoji">🛡️</div>
-                    <div class="name">ToolGuard Shim</div>
+                    <div class="name">ToolGuard Connector</div>
                     <div class="desc">Local MCP adapter</div>
                 </div>
                 <div class="arch-arrow mobile-vertical">↓</div>
                 <div class="arch-arrow desktop-horizontal">→</div>
                 <div class="arch-node proxy animate">
                     <div class="emoji">🔒</div>
-                    <div class="name">ToolGuard Proxy</div>
+                    <div class="name">ToolGuard Gateway</div>
                     <div class="desc">Policy · Review · Audit</div>
                 </div>
                 <div class="arch-arrow mobile-vertical">↓</div>
@@ -481,7 +481,7 @@
                 <div class="hiw-step">
                     <div class="hiw-step-num">2</div>
                     <h3>Your AI calls tools</h3>
-                    <p>AI agents access your services through ToolGuard. They get results, not credentials. Every call goes through the proxy.</p>
+                    <p>AI agents access your services through ToolGuard. They get results, not credentials. Every call goes through the gateway.</p>
                 </div>
                 <div class="hiw-connector">→</div>
                 <div class="hiw-step">
@@ -544,14 +544,14 @@
                     <div class="comparison-header">
                         <div class="comparison-icon safe">🛡️</div>
                         <h3>With ToolGuard</h3>
-                        <p class="comparison-label">Secure Proxy Access</p>
+                        <p class="comparison-label">Secure Gateway Access</p>
                     </div>
                     <div class="benefit-list">
                         <div class="benefit-item">
                             <div class="benefit-icon">🔐</div>
                             <div>
                                 <strong>Credentials Isolated</strong>
-                                <p>API keys safely stored in the proxy. AI agent only has a simple token with limited scope.</p>
+                                <p>API keys safely stored in the gateway. AI agent only has a simple token with limited scope.</p>
                             </div>
                         </div>
                         <div class="benefit-item">
@@ -590,12 +590,12 @@
                 <div class="feature-card">
                     <div class="feature-icon">🔐</div>
                     <h3>Credential Isolation</h3>
-                    <p>API keys and OAuth tokens never leave the proxy. Your AI agent authenticates with a simple token — ToolGuard handles the rest.</p>
+                    <p>API keys and OAuth tokens never leave the gateway. Your AI agent authenticates with a simple token — ToolGuard handles the rest.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📋</div>
                     <h3>Policy Engine</h3>
-                    <p>Define what your AI can and can't do. Rate limits, tool access controls, sensitivity levels, contact filters — all enforced at the proxy.</p>
+                    <p>Define what your AI can and can't do. Rate limits, tool access controls, sensitivity levels, contact filters — all enforced at the gateway.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">👁️</div>
@@ -641,8 +641,8 @@
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
-                    <h3>Point your AI at the shim</h3>
-                    <p>Configure your AI agent to use the ToolGuard shim as its MCP server. Everything flows through the proxy.</p>
+                    <h3>Point your AI at the connector</h3>
+                    <p>Configure your AI agent to use the ToolGuard connector as its MCP server. Everything flows through the gateway.</p>
                     <code>$ toolguard shim --proxy https://...</code>
                 </div>
             </div>
@@ -671,7 +671,7 @@
                         <span class="blog-category">Behind the Scenes</span>
                     </div>
                     <h3><a href="/blog/valentine-sprint.html">The Valentine's Day Sprint</a></h3>
-                    <p>How we built ToolGuard in one intense day — from zero to security proxy in 24 hours. A tale of caffeine, code, and the power of focused execution.</p>
+                    <p>How we built ToolGuard in one intense day — from zero to security gateway in 24 hours. A tale of caffeine, code, and the power of focused execution.</p>
                     <div class="blog-author">
                         <div class="author-avatar">👨‍💻</div>
                         <div class="author-info">
