@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToolGuard — Security Proxy for MCP Servers</title>
-    <meta name="description" content="ToolGuard is an open-source security proxy that sits between AI agents and MCP servers, providing credential isolation, request review, and policy enforcement.">
+    <meta name="description" content="ToolGuard securely connects AI agents to your services — Gmail, GitHub, and more — with credential isolation, policy enforcement, and a full audit log.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -173,6 +173,30 @@
                 animation: flowPulseDesktop 4s ease-in-out infinite;
                 top: 50%;
             }
+        }
+
+        /* How It Works (Conceptual) */
+        .how-it-works-intro { padding: 5rem 1.5rem; background: #f9fafb; }
+        .hiw-steps { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 4rem; position: relative; }
+        .hiw-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1rem 3rem; position: relative; }
+        .hiw-step:last-child { padding-bottom: 0; }
+        .hiw-connector { display: none; }
+        .hiw-step-num {
+            width: 3.5rem; height: 3.5rem;
+            background: var(--brand-600);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.25rem; font-weight: 700;
+            margin-bottom: 1.25rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 6px var(--brand-100);
+        }
+        .hiw-step h3 { font-size: 1.125rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem; }
+        .hiw-step p { font-size: 0.9375rem; color: #6b7280; line-height: 1.65; max-width: 22rem; }
+        @media (min-width: 768px) {
+            .hiw-steps { grid-template-columns: 1fr auto 1fr auto 1fr; align-items: start; gap: 0; }
+            .hiw-step { padding: 0 1rem; }
+            .hiw-connector { display: flex; align-items: center; padding-top: 1.75rem; color: var(--brand-300); font-size: 1.5rem; }
         }
 
         /* Features */
@@ -362,6 +386,7 @@
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How It Works</a>
+                <a href="/use-cases.html">Use Cases</a>
                 <a href="/pricing.html">Pricing</a>
                 <a href="/docs/">Docs</a>
                 <a href="https://github.com/toolguard/toolguard">GitHub</a>
@@ -374,6 +399,7 @@
         <div id="mobile-menu" class="nav-mobile">
             <a href="#features">Features</a>
             <a href="#how-it-works">How It Works</a>
+            <a href="/use-cases.html">Use Cases</a>
             <a href="/pricing.html">Pricing</a>
             <a href="/docs/">Docs</a>
             <a href="https://github.com/toolguard/toolguard">GitHub</a>
@@ -388,7 +414,7 @@
             Open Source
         </div>
         <h1>Security proxy for <span class="accent">AI agents</span> accessing your tools</h1>
-        <p class="subtitle">ToolGuard sits between AI agents and MCP servers, providing credential isolation, policy enforcement, request review, and audit logging — so your AI can be helpful without being dangerous.</p>
+        <p class="subtitle">Give Claude or Cursor access to Gmail, GitHub, and more — without handing over your credentials. ToolGuard isolates secrets, enforces policy, and logs every tool call your AI makes.</p>
         <div class="cta-row">
             <a href="https://app.toolguard.ai" class="btn-primary">Get Started Free</a>
             <a href="https://github.com/toolguard/toolguard" class="btn-secondary">View on GitHub →</a>
@@ -434,6 +460,33 @@
                 </div>
             </div>
             <p class="arch-note">Your AI agent never sees raw credentials. ToolGuard enforces policies before any tool call reaches your services.</p>
+        </div>
+    </section>
+
+    <!-- How It Works (Conceptual) -->
+    <section class="how-it-works-intro">
+        <div class="container">
+            <h2 class="section-title">How it works</h2>
+            <p class="section-subtitle">Three steps from setup to secure AI access.</p>
+            <div class="hiw-steps">
+                <div class="hiw-step">
+                    <div class="hiw-step-num">1</div>
+                    <h3>Connect your services</h3>
+                    <p>Add Gmail, GitHub, or any MCP server to ToolGuard. Credentials go into an encrypted vault — your AI never sees them.</p>
+                </div>
+                <div class="hiw-connector">→</div>
+                <div class="hiw-step">
+                    <div class="hiw-step-num">2</div>
+                    <h3>Your AI calls tools</h3>
+                    <p>AI agents access your services through ToolGuard. They get results, not credentials. Every call goes through the proxy.</p>
+                </div>
+                <div class="hiw-connector">→</div>
+                <div class="hiw-step">
+                    <div class="hiw-step-num">3</div>
+                    <h3>You stay in control</h3>
+                    <p>Every tool call is logged. Revoke access anytime. Policy enforcement is built in — set limits before anything goes wrong.</p>
+                </div>
+            </div>
         </div>
     </section>
 

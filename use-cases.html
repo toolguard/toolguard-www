@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Cases — ToolGuard</title>
+    <meta name="description" content="See how teams use ToolGuard to give AI agents secure access to Gmail, GitHub, and more — with credential isolation, audit logging, and instant revocation.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/favicon.svg">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Use Cases — ToolGuard">
+    <meta property="og:description" content="See how teams use ToolGuard to give AI agents secure access to Gmail, GitHub, and more — with credential isolation, audit logging, and instant revocation.">
+    <meta property="og:image" content="/assets/og-image.svg">
+    <meta property="og:url" content="https://toolguard.ai/use-cases.html">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Use Cases — ToolGuard">
+    <meta name="twitter:description" content="See how teams use ToolGuard to give AI agents secure access to Gmail, GitHub, and more — with credential isolation, audit logging, and instant revocation.">
+    <meta name="twitter:image" content="/assets/og-image.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #111827; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; }
+
+        /* Colors */
+        :root {
+            --brand-50: #f0f9ff; --brand-100: #e0f2fe; --brand-200: #bae6fd;
+            --brand-300: #7dd3fc; --brand-400: #38bdf8; --brand-500: #0ea5e9;
+            --brand-600: #0284c7; --brand-700: #0369a1; --brand-800: #075985;
+            --brand-900: #0c4a6e;
+        }
+
+        /* Layout */
+        .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+        .text-center { text-align: center; }
+
+        /* Nav */
+        .nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #f3f4f6; z-index: 50; }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; max-width: 72rem; margin: 0 auto; }
+        .nav-logo { display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem; font-weight: 700; color: #111827; }
+        .nav-logo-icon { width: 2rem; height: 2rem; border-radius: 0.5rem; background: linear-gradient(135deg, #0c4a6e, #0ea5e9); display: flex; align-items: center; justify-content: center; }
+        .nav-links { display: none; align-items: center; gap: 2rem; }
+        .nav-links a { font-size: 0.875rem; color: #4b5563; transition: color 0.2s; }
+        .nav-links a:hover { color: #111827; }
+        .nav-cta { padding: 0.5rem 1rem; background: var(--brand-600); color: #ffffff !important; font-size: 0.875rem; font-weight: 600; border-radius: 0.5rem; transition: background 0.2s; }
+        .nav-cta:hover { background: var(--brand-700); color: #ffffff !important; }
+        .nav-hamburger { display: block; padding: 0.5rem; background: none; border: none; cursor: pointer; color: #4b5563; }
+        .nav-mobile { display: none; border-top: 1px solid #f3f4f6; background: white; padding: 1rem 1.5rem; }
+        .nav-mobile.open { display: block; }
+        .nav-mobile a { display: block; padding: 0.5rem 0; font-size: 0.875rem; color: #4b5563; }
+        .nav-mobile .nav-cta { display: block; text-align: center; margin-top: 0.5rem; }
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+            .nav-hamburger { display: none; }
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0ea5e9 100%);
+            padding: 8rem 1.5rem 5rem;
+            text-align: center;
+        }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.75rem; background: rgba(255,255,255,0.1); border-radius: 9999px; color: rgba(255,255,255,0.8); font-size: 0.875rem; margin-bottom: 1.5rem; }
+        .hero-badge-dot { width: 0.5rem; height: 0.5rem; background: #4ade80; border-radius: 9999px; display: inline-block; }
+        .hero h1 { font-size: 2rem; font-weight: 800; color: white; line-height: 1.15; max-width: 56rem; margin: 0 auto; }
+        .hero h1 .accent { color: #bae6fd; }
+        .hero .subtitle { margin-top: 1.25rem; font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 40rem; margin-left: auto; margin-right: auto; line-height: 1.5; }
+        @media (min-width: 640px) {
+            .hero { padding: 10rem 1.5rem 7rem; }
+            .hero h1 { font-size: 2.25rem; }
+            .hero .subtitle { margin-top: 1.5rem; font-size: 1.125rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+        }
+        @media (min-width: 1024px) {
+            .hero h1 { font-size: 3.25rem; line-height: 1.1; }
+        }
+
+        /* Use Cases Section */
+        .use-cases { padding: 5rem 1.5rem; }
+        .section-title { font-size: 1.625rem; font-weight: 700; text-align: center; line-height: 1.2; }
+        .section-subtitle { margin-top: 1rem; font-size: 1rem; color: #6b7280; text-align: center; max-width: 40rem; margin-left: auto; margin-right: auto; line-height: 1.5; }
+        @media (min-width: 768px) {
+            .section-title { font-size: 1.875rem; }
+            .section-subtitle { font-size: 1.125rem; }
+        }
+
+        .use-cases-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 4rem; max-width: 56rem; margin-left: auto; margin-right: auto; }
+        @media (min-width: 768px) { .use-cases-grid { gap: 2.5rem; } }
+
+        .use-case-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            background: white;
+        }
+        .use-case-card:hover {
+            border-color: var(--brand-200);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.08);
+            transform: translateY(-2px);
+        }
+        @media (min-width: 640px) {
+            .use-case-card { flex-direction: row; align-items: flex-start; gap: 1.5rem; }
+        }
+
+        .use-case-icon {
+            flex-shrink: 0;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--brand-50);
+            border: 1px solid var(--brand-100);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        .use-case-body { flex: 1; }
+        .use-case-body h3 { font-size: 1.125rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem; }
+        .use-case-body p { font-size: 0.9375rem; color: #4b5563; line-height: 1.65; }
+        @media (min-width: 768px) {
+            .use-case-body h3 { font-size: 1.25rem; }
+            .use-case-body p { font-size: 1rem; }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0ea5e9 100%);
+            padding: 5rem 1.5rem;
+            text-align: center;
+        }
+        .cta-section h2 { font-size: 1.875rem; font-weight: 700; color: white; }
+        .cta-section p { margin-top: 1rem; font-size: 1.125rem; color: rgba(255,255,255,0.7); max-width: 32rem; margin-left: auto; margin-right: auto; }
+        .cta-section .cta-row { margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        .cta-section .btn-primary { display: inline-block; padding: 0.75rem 2rem; background: white; color: var(--brand-700); font-weight: 600; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.2s; }
+        .cta-section .btn-primary:hover { background: #f9fafb; color: var(--brand-700); }
+        .cta-section .btn-secondary { display: inline-block; padding: 0.75rem 2rem; border: 1px solid rgba(255,255,255,0.3); color: white; font-weight: 600; border-radius: 0.5rem; transition: background 0.2s; }
+        .cta-section .btn-secondary:hover { background: rgba(255,255,255,0.1); color: white; }
+        @media (min-width: 640px) {
+            .cta-section h2 { font-size: 2.25rem; }
+            .cta-section .cta-row { flex-direction: row; justify-content: center; }
+        }
+
+        /* Footer */
+        .footer { padding: 2.5rem 1.5rem; background: #111827; color: #9ca3af; }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        .footer-brand { margin-bottom: 1rem; }
+        .footer-brand .logo { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+        .footer-brand .logo span { font-size: 1rem; font-weight: 700; color: white; }
+        .footer-brand p { font-size: 0.8125rem; line-height: 1.5; }
+        .footer h4 { color: white; font-weight: 600; margin-bottom: 0.75rem; font-size: 0.8125rem; }
+        .footer ul { list-style: none; padding: 0; }
+        .footer li { padding: 0.1875rem 0; }
+        .footer li a { font-size: 0.8125rem; color: #9ca3af; transition: color 0.2s; }
+        .footer li a:hover { color: white; }
+        .footer hr { margin: 1.5rem 0; border: none; border-top: 1px solid #1f2937; }
+        .footer .copyright { font-size: 0.8125rem; text-align: center; }
+        @media (min-width: 480px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .footer-brand { grid-column: 1 / -1; }
+        }
+        @media (min-width: 768px) {
+            .footer { padding: 3rem 1.5rem; }
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+            .footer-brand { grid-column: auto; margin-bottom: 0; }
+            .footer-brand .logo span { font-size: 1.125rem; }
+            .footer-brand p { font-size: 0.875rem; }
+            .footer h4 { font-size: 0.875rem; margin-bottom: 1rem; }
+            .footer li { padding: 0.25rem 0; }
+            .footer li a { font-size: 0.875rem; }
+            .footer hr { margin: 2rem 0; }
+            .footer .copyright { font-size: 0.875rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <img src="/assets/logo-icon.svg" alt="ToolGuard" width="32" height="32" style="border-radius: 0.5rem;">
+                ToolGuard
+            </a>
+            <div class="nav-links">
+                <a href="/#features">Features</a>
+                <a href="/#how-it-works">How It Works</a>
+                <a href="/use-cases.html">Use Cases</a>
+                <a href="/pricing.html">Pricing</a>
+                <a href="/docs/">Docs</a>
+                <a href="https://github.com/toolguard/toolguard">GitHub</a>
+                <a href="https://app.toolguard.ai" class="nav-cta">Get Started</a>
+            </div>
+            <button class="nav-hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="nav-mobile">
+            <a href="/#features">Features</a>
+            <a href="/#how-it-works">How It Works</a>
+            <a href="/use-cases.html">Use Cases</a>
+            <a href="/pricing.html">Pricing</a>
+            <a href="/docs/">Docs</a>
+            <a href="https://github.com/toolguard/toolguard">GitHub</a>
+            <a href="https://app.toolguard.ai" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            What ToolGuard does today
+        </div>
+        <h1>How teams use <span class="accent">ToolGuard</span></h1>
+        <p class="subtitle">Real use cases — securing AI agent access to Gmail, managing team credentials, staying compliant, and more.</p>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="use-cases">
+        <div class="container">
+            <div class="use-cases-grid">
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">📬</div>
+                    <div class="use-case-body">
+                        <h3>Secure Gmail Access for AI Agents</h3>
+                        <p>Give Claude, Cursor, or any MCP-compatible AI access to Gmail without sharing credentials. ToolGuard holds the OAuth token, the AI gets tool calls, and every email read or sent appears in the audit log. Revoke anytime — without touching your Google account.</p>
+                    </div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">👥</div>
+                    <div class="use-case-body">
+                        <h3>Team AI Access Management</h3>
+                        <p>Run one gateway for your whole team. Configure services once, and every developer's AI client gets the same tools. Centralized audit log, one place to revoke access — no more API keys scattered across laptops.</p>
+                    </div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🏛️</div>
+                    <div class="use-case-body">
+                        <h3>Compliance-Safe AI Deployment</h3>
+                        <p>Self-host on your own infrastructure. Credentials never leave your network. The full audit trail gives compliance teams what they need for review. Works with legal, finance, and healthcare teams where data residency and access logging aren't optional.</p>
+                    </div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🔌</div>
+                    <div class="use-case-body">
+                        <h3>MCP Server Consolidation</h3>
+                        <p>Multiple MCP servers across multiple AI clients? ToolGuard is the single connector. Configure once, use from Claude Desktop, Cursor, Continue, or any MCP client. One place to manage credentials, policies, and logs — instead of juggling configs everywhere.</p>
+                    </div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🕐</div>
+                    <div class="use-case-body">
+                        <h3>Contractor &amp; Agent Temporary Access</h3>
+                        <p>Provision a scoped token for a contractor or an automated agent, monitor exactly what it does, and revoke cleanly when the engagement ends. No credential sharing. No awkward "can you change the password" conversations after the fact.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Ready to try it?</h2>
+        <p>Set up ToolGuard in minutes. Connect Gmail, add your AI client, and see the audit log fill up.</p>
+        <div class="cta-row">
+            <a href="https://app.toolguard.ai" class="btn-primary">Get Started Free</a>
+            <a href="/docs/" class="btn-secondary">Read the Docs →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="/assets/logo-icon.svg" alt="ToolGuard" width="32" height="32" style="border-radius: 0.5rem;">
+                        <span>ToolGuard</span>
+                    </div>
+                    <p>Open-source security for AI agents.</p>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/#features">Features</a></li>
+                        <li><a href="/pricing.html">Pricing</a></li>
+                        <li><a href="/docs/">Documentation</a></li>
+                        <li><a href="#">Changelog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/toolguard/toolguard">GitHub</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="mailto:hello@toolguard.ai">Contact</a></li>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">&copy; 2026 Elixie, LLC &mdash; 5044 Edinger Ave, Huntington Beach, CA 92649 &mdash; All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const el = document.querySelector(a.getAttribute('href'));
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('mobile-menu').classList.remove('open');
+            });
+        });
+    </script>
+    <script src="/assets/cookie-consent.js"></script>
+</body>
+</html>
